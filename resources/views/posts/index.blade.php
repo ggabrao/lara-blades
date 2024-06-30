@@ -46,6 +46,14 @@
                                         </x-dropdown-link>
                                     </x-slot>
                                 </x-dropdown>
+                                <form method="POST" action="{{ route('posts.destroy', $post) }}">
+                                    @csrf
+                                    @method('delete')
+                                    <x-dropdown-link :href="route('posts.destroy', $post)"
+                                                     onclick="event.preventDefault(); this.closest('form').submit();">
+                                        {{ __('Delete') }}
+                                    </x-dropdown-link>
+                                </form>
                             @endif
                         </div>
                         <p class="mt-4 text-lg text-gray-900">{{ $post->message }}</p>
